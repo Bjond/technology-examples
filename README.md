@@ -13,3 +13,5 @@ This demonstration runs through some simple examples how to define and consume s
 * sca-service-consume
     * Adds an sca binding to promote the service outside the application, yet only available withing the same jvm instance. This comprises of two war files- one that defines and exposes the service, and the second that consumes it.
 
+ The project requires gradle 1.6+; just type 'gradle' at the root directory and war files will be in the 'deployments' directory. These have been created for and tested with SwitchYard 0.8; the wars deploy cleanly inside [this] (http://www.redhat.com/j/elqNow/elqRedir.htm?ref=http://downloads.jboss.org/switchyard/releases/v0.8.Final/switchyard-as7-0.8.0.Final.zip) Jboss.
+
