@@ -1,0 +1,45 @@
+/**
+ * This builds a war package that registers a very simple SwitchYard service.
+ *
+ * @author Ben Flynn
+ */
+
+repositories {
+    maven{ url 'http://repository.jboss.org/nexus/content/groups/public' }
+    mavenCentral()
+}
+
+apply plugin: 'war'
+
+defaultTasks 'assemble'
+
+dependencies {
+    providedCompile group: 'org.switchyard', name: 'switchyard-api', version: '0.8.0.Final'
+    providedCompile group: 'org.switchyard', name: 'switchyard-plugin', version: '0.8.0.Final'
+    providedCompile group: 'org.switchyard.components', name: 'switchyard-component-bean', version: '0.8.0.Final'
+    providedCompile group: 'org.jboss.spec', name: 'jboss-javaee-6.0', version: '2.0.0.Final'
+    providedCompile 'org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec:1.0.0.Final'
+    providedCompile 'javax.enterprise:cdi-api:1.0-SP4'
+}
+
+war {
+    webXml = file('src/main/webapp/WEB-INF/web.xml')
+    from('src/main/resources/META-INF') {
+        into('META-INF')
+    } 
+    archiveName = 'simple-test-consume-service.war'
+    outputs.files file('../../deployments/simple-test-consume-service.war')
+    doLast {
+        copy {
+            from 'build/libs'
+            into '../../deployments'
+            include '*.war'
+        }
+    }
+}
+
+task cleanWar(type: Delete) {
+    delete '../../deployments/simple-test-consume-service.war'
+}
+
+clean.dependsOn(cleanWar)

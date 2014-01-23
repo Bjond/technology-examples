@@ -1,0 +1,2 @@
+include 'switchyard:simple-service'
+include 'switchyard:simple-service-consume'

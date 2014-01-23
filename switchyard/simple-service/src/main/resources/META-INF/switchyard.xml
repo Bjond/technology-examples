@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The root element defines the application and gives it a unique namespace. -->
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0" name="simple-test" targetNamespace="urn:switchyard-test-service:simple-test:0.1.0">
+<!-- All services and references are contained within a composite block. -->
+	<composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="simple-test" targetNamespace="urn:switchyard-test-service:simple-test:0.1.0">
+		<!-- The service needs to be defined. -->
+	    <service name="SimpleTestService" promote="SimpleTestService">
+	    	<interface.java interface="com.bjond.switchyard.test.SimpleTestService"/>
+	    </service> 
+		<component name="SimpleTestService">
+			<!-- Inside a component block is where the service and implementation are defined. -->
+			<!-- I like to think of the component block as the implementation and outside as the service definition. -->
+			<implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="com.bjond.switchyard.test.SimpleTestServiceBean"/>
+			<service name="SimpleTestService">
+			    <interface.java interface="com.bjond.switchyard.test.SimpleTestService"/>
+			</service> 
+		</component>
+	</composite>
+</switchyard>

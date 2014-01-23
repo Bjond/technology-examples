@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The root 'switchyard' element defines a namespace and application name. -->
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0" name="simple-test-consume" targetNamespace="urn:switchyard-test-service:simple-test-consume:0.1.0">
+	<!-- All service descriptions and references need to be in a composite block. -->
+	<composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="simple-test-consume" targetNamespace="urn:switchyard-test-service:simple-test-consume:0.1.0">
+	    <!-- This is the service definition. -->
+	    <service name="SimpleTestConsumeService" promote="SimpleTestConsumeService">
+	    	<interface.java interface="com.bjond.switchyard.test.SimpleTestConsumeService"/>
+	    </service> 
+	    <!-- A component is like an implementation of the defined resources. -->
+		<component name="SimpleTestConsumeService">
+			<!-- Specify the implementation bean for the previously defined service. -->
+			<implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="com.bjond.switchyard.test.SimpleTestConsumeServiceBean"/>
+			<!-- We need to define the service within the component as well. -->
+			<service name="SimpleTestConsumeService">
+			    <interface.java interface="com.bjond.switchyard.test.SimpleTestConsumeService"/>
+			</service> 
+			<!-- In order to consume the service, we need a reference to it. -->
+			<reference name="SimpleTestConsumeService">
+				<interface.java interface="com.bjond.switchyard.test.SimpleTestConsumeService"/>
+			</reference>
+		</component>
+	</composite>
+</switchyard>

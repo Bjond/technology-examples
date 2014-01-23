@@ -1,0 +1,25 @@
+/**
+ * A simple build script for our demo projects.
+ *
+ * @author Ben Flynn
+ */
+ 
+/**
+ * Add maven central to the repositories. 
+ */
+buildscript{
+    repositories {
+        mavenCentral()
+    }
+}
+
+/**
+ * I want to be able to reference the 'assemble' target from the java plugin.
+ */ 
+apply plugin: 'java'
+
+/**
+ * Set the 'assemble' target as the default. This will mean more for projects referenced.
+ */
+defaultTasks 'assemble'
+
