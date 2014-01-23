@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- In this example, both wars are using the same application name and namespace. -->
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0" name="sca-test" targetNamespace="urn:switchyard-test-service:sca-test:0.1.0">
+	<composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="sca-test" targetNamespace="urn:switchyard-test-service:sca-test:0.1.0">
+		<!-- The component name doesn't matter in this case since we're just using it to define a reference. -->
+		<component name="ConsumerComponent">
+			<!-- We are just consuming; no bean to implement. This is required by the component xsd, however. -->
+			<implementation.bean />
+			<!-- Here is our reference to the service promoted over sca. -->
+            <reference name="PromotedTestService">
+                <interface.java interface="com.bjond.switchyard.test.PromotedTestService"/>
+            </reference>
+		</component>
+	</composite>
+</switchyard>

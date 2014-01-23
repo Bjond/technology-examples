@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Notice that both wars are using the same namespace and application. -->
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0" name="sca-test" targetNamespace="urn:switchyard-test-service:sca-test:0.1.0">
+	<composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="sca-test" targetNamespace="urn:switchyard-test-service:sca-test:0.1.0">
+		<!-- Here we added an sca binding to our service. It's that simple. -->
+	    <service name="PromotedTestService" promote="PromotedTestService">
+	    	<interface.java interface="com.bjond.switchyard.test.PromotedTestService"/>
+			<binding.sca />
+	    </service> 
+	    <!-- And we define the service implementation as before. -->
+		<component name="PromotedTestService">
+			<implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="com.bjond.switchyard.test.PromotedTestServiceBean"/>
+			<service name="PromotedTestService">
+			    <interface.java interface="com.bjond.switchyard.test.PromotedTestService"/>
+			</service> 
+		</component>
+	</composite>
+</switchyard>

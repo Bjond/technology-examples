@@ -1,2 +1,4 @@
 include 'switchyard:simple-service'
 include 'switchyard:simple-service-consume'
+include 'switchyard:sca-service-consume:switchyard-sca-service'
+include 'switchyard:sca-service-consume:switchyard-sca-consumer'
