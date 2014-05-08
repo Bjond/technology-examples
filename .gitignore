@@ -4,5 +4,7 @@
 **/.classpath
 **/.settings
 /deployments
-
+.project
+.settings
+.classpath
 /build
