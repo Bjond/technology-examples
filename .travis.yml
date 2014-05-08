@@ -1,0 +1,4 @@
+language: java
+script: gradle
+jdk: openjdk7
+install: true
